@@ -1,5 +1,6 @@
 package com.curso.domains;
 
+import com.curso.domains.dtos.AutorDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -16,7 +17,7 @@ public class Autor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_autor")
-    private int idAutor;
+    private Integer idAutor;
 
     @NotNull
     @NotBlank
@@ -32,18 +33,24 @@ public class Autor {
 
     public Autor() { }
 
-    public Autor(int idAutor, String nome, String documentoPessoal) {
+    public Autor(Integer idAutor, String nome, String documentoPessoal) {
         this.idAutor = idAutor;
         this.nome = nome;
         this.documentoPessoal = documentoPessoal;
     }
 
+    public Autor(AutorDTO dto){
+        this.idAutor = dto.getIdAutor();
+        this.nome = dto.getNome();
+        this.documentoPessoal = dto.getDocumentoPessoal();
+    }
 
-    public int getIdAutor() {
+
+    public Integer getIdAutor() {
         return idAutor;
     }
 
-    public void setIdAutor(int idAutor) {
+    public void setIdAutor(Integer idAutor) {
         this.idAutor = idAutor;
     }
 

@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 public class EditoraDTO {
 
-    private int idEditora;
+    private Integer idEditora;
 
     @NotNull(message="O campo cnpj nao pode ser nulo")
     @NotBlank(message="o campo cnpj nao pode estar vazio")
@@ -22,11 +22,11 @@ public class EditoraDTO {
         this.razaoSocial = editora.getRazaoSocial();
     }
 
-    public int getIdEditora() {
+    public Integer getIdEditora() {
         return idEditora;
     }
 
-    public void setIdEditora(int idEditora) {
+    public void setIdEditora(Integer idEditora) {
         this.idEditora = idEditora;
     }
 

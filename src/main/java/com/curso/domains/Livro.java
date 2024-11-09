@@ -1,5 +1,6 @@
 package com.curso.domains;
 
+import com.curso.domains.dtos.LivroDTO;
 import com.curso.domains.enums.Conservacao;
 import com.curso.domains.enums.Status;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -20,21 +21,21 @@ public class Livro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_livro")
-    private long idLivro;
+    private Long idLivro;
 
     @NotNull
     @NotBlank
     private String titulo;
 
     @NotNull
+    @Column(unique = true)
     private String isbn;
 
     @NotNull
-    @Min(1)
     private int numeroPaginas;
 
     @JsonFormat(pattern ="dd/MM/yyyy")
-    private LocalDate dataCompra = LocalDate.now();
+    private LocalDate dataCompra;
 
     @NotNull
     @Digits(integer=15, fraction=3)
@@ -63,7 +64,7 @@ public class Livro {
     }
 
 
-    public Livro(long idLivro, String titulo, String isbn, int numeroPaginas, LocalDate dataCompra, BigDecimal valorCompra, Editora editora, Autor autor, Status status, Conservacao conservacao) {
+    public Livro(Long idLivro, String titulo, String isbn, int numeroPaginas, LocalDate dataCompra, BigDecimal valorCompra, Editora editora, Autor autor, Status status, Conservacao conservacao) {
         this.idLivro = idLivro;
         this.titulo = titulo;
         this.isbn = isbn;
@@ -77,11 +78,29 @@ public class Livro {
 
     }
 
-    public long getIdLivro() {
+    public Livro(LivroDTO dto){
+        this.idLivro = dto.getIdLivro();
+        this.titulo = dto.getTitulo();
+        this.isbn = dto.getIsbn();
+        this.numeroPaginas = dto.getNumeroPaginas();
+        this.dataCompra = dto.getDataCompra();
+        this.valorCompra = dto.getValorCompra();
+
+        this.status = Status.toEnum(dto.getStatus());
+        this.conservacao = Conservacao.toEnum(dto.getConservacao());
+
+        this.editora = new Editora();
+        this.editora.setId(dto.getIdEditora());
+
+        this.autor = new Autor();
+        this.autor.setIdAutor(dto.getIdAutor());
+    }
+
+    public Long getIdLivro() {
         return idLivro;
     }
 
-    public void setIdLivro(long idLivro) {
+    public void setIdLivro(Long idLivro) {
         this.idLivro = idLivro;
     }
 

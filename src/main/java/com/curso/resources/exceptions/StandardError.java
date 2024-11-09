@@ -1,6 +1,10 @@
 package com.curso.resources.exceptions;
 
-public class StandardError {
+import java.io.Serializable;
+
+public class StandardError implements Serializable {
+
+    private static final long serialVersionUID =1L;
 
     private Long timeStamp;
     private Integer status;

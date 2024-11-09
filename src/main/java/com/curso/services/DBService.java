@@ -28,17 +28,17 @@ public class DBService {
 
     public void initDB(){
 
-        Editora editora01 = new Editora(0,"123123123123","A");
-        Editora editora02 = new Editora(0,"32132132123","B");
+        Editora editora01 = new Editora(null,"123123123123","A");
+        Editora editora02 = new Editora(null,"32132132123","B");
 
 
-        Autor autor01 = new Autor(0,"Jose Abreu", "12345512-90");
-        Autor autor02 = new Autor(0,"Tonho Doido","98765432120");
+        Autor autor01 = new Autor(null,"Jose Abreu", "12345512-90");
+        Autor autor02 = new Autor(null,"Tonho Doido","98765432120");
 
 
-        Livro livro01 = new Livro(0,"Livro A","12345",500,
-                LocalDate.now(), new BigDecimal("150.00"), editora01, autor01,Status.LENDO,Conservacao.BOM);
-        Livro livro02 = new Livro (0,"Livro B","54321", 300,
+        Livro livro01 = new Livro(null,"Livro A","12345",500,
+                LocalDate.now(), new BigDecimal("150.00"), editora01, autor01, Status.LENDO,Conservacao.BOM);
+        Livro livro02 = new Livro (null,"Livro B","54321", 300,
                 LocalDate.now(), new BigDecimal("90.00"), editora02, autor02,Status.LIDO, Conservacao.MARCADEUSO);
 
 

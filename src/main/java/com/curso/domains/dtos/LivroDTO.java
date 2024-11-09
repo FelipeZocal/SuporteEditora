@@ -12,18 +12,16 @@ import java.time.LocalDate;
 
 public class LivroDTO {
 
-    private long idLivro;
+    private Long idLivro;
 
     @NotNull(message = "O campo titulo nao pode ser nulo")
     @NotBlank(message = "O campo titulo nao pode estar vazio")
     private String titulo;
 
     @NotNull(message = "O campo isbn nao pode ser nulo")
-    @NotBlank(message = "O campo isbn nao pode estar vazio")
     private String isbn;
 
     @NotNull(message = "O campo numeroPaginas nao pode ser nulo")
-    @NotBlank(message = "o campo numeroPaginas nao pode estar vazio")
     private int numeroPaginas;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
@@ -69,11 +67,11 @@ public class LivroDTO {
 
     }
 
-    public long getIdLivro() {
+    public Long getIdLivro() {
         return idLivro;
     }
 
-    public void setIdLivro(long idLivro) {
+    public void setIdLivro(Long idLivro) {
         this.idLivro = idLivro;
     }
 
